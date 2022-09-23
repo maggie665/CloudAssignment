@@ -17,12 +17,24 @@ class Customer(models.Model):
         return self.Company
 
 
+class Product(models.Model):
+    ProduceID = models.IntegerField(null=True, blank=True)
+    ProductName = models.CharField(max_length=20)
+    ProductDetail = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.ProduceID
+
+
 class Order(models.Model):
     OrderID = models.IntegerField(null=True, blank=True)
     OrderNumber = models.IntegerField()
-    OrderQTY = 
-    ProduceID
-    CustomerID
-    OrderDate
+    OrderQTY = models.IntegerField()
+    ProduceID = models.ForeignKey(Product, on_delete=models.CASCADE)
+    CustomerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    OrderDate = models.DateField()
+
+    def __str__(self):
+        return self.OrderID
 
 
