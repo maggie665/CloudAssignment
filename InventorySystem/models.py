@@ -6,7 +6,7 @@ from django.db import models
 
 class Customer(models.Model):
     customerID = models.IntegerField(null=True, blank=True)
-    RegistrationDate = models.DateTimeField
+    RegistrationDate = models.DateField
     Company = models.CharField(max_length=150)
     ContactName = models.CharField(max_length=20)
     Address = models.CharField(max_length=150)
@@ -23,7 +23,7 @@ class Product(models.Model):
     ProductDetail = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.ProduceID
+        return self.ProductName
 
 
 class Order(models.Model):
@@ -34,7 +34,5 @@ class Order(models.Model):
     CustomerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
     OrderDate = models.DateField()
 
-    def __str__(self):
-        return self.OrderID
-
-
+    #def __str__(self):
+        #return self.ProduceID
